@@ -1,6 +1,9 @@
-﻿# **Python Taixuanshifa 太玄筮法**
+﻿﻿# **Python Taixuanshifa 太玄筮法**
 
 ## **1. Introduction 導讀**︰
+
+n alternative Iching divination tool name Tai Xuan created by a Chinese Confucian Yang Xiong (BC53 - 18CE) from Xi Han Dynasty.
+
 《太玄》，又稱《太玄經》、《揚子太玄經》或《玄經》，是西漢學者揚雄的一部著作，用來闡述他的哲學體系和宇宙論。《四庫全書》中為避康熙皇帝的名諱，改稱其為《太元經》。《新唐書·藝文志》作十二卷，《文獻通考》作十卷。
 
 《太玄》糅合了儒家、道家和陰陽家的學說。其首先從《老子》「玄之又玄」中概括出「玄」（玄奧）的概念，以玄為中心，按天地人三道的分類建立了一個形上學體系。《太玄》認為一切事物從發展到旺盛到消亡都可分成九個階段。
@@ -16,7 +19,7 @@
 	pip install taixuanshifa
 ```
 
-## **3. 起課方式**
+## **3. Start Divinating 起卦方式**
 ```python
 	from taixuanshifa import taixuanshifa
 	
