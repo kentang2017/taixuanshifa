@@ -19,7 +19,7 @@ n alternative Iching divination tool name Tai Xuan created by a Chinese Confucia
 	pip install taixuanshifa
 ```
 
-## **3. Start Divinating 起卦方式**
+## **3. Start Divination 起卦**
 ```python
 	from taixuanshifa import taixuanshifa
 	
