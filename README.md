@@ -7,6 +7,8 @@
 
 唐朝詩人李白的《俠客行》最後一句「白首太玄經」，即指此書。
 
+![alt text](https://github.com/kentang2017/taixuanshifa/blob/master/data/pic.png?raw=true)
+
 ## **2. Installation 安裝套件**
 
 ```python
