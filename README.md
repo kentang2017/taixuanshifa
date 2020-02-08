@@ -2,7 +2,7 @@
 
 ## **1. Introduction 導讀**︰
 
-n alternative Iching divination tool name Tai Xuan created by a Chinese Confucian Yang Xiong (BC53 - 18CE) from Xi Han Dynasty.
+An alternative Iching divination tool name Tai Xuan created by a Chinese Confucian Yang Xiong (BC53 - 18CE) from Xi Han Dynasty.
 
 《太玄》，又稱《太玄經》、《揚子太玄經》或《玄經》，是西漢學者揚雄的一部著作，用來闡述他的哲學體系和宇宙論。《四庫全書》中為避康熙皇帝的名諱，改稱其為《太元經》。《新唐書·藝文志》作十二卷，《文獻通考》作十卷。
 
