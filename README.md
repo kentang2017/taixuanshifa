@@ -1,4 +1,9 @@
 ﻿﻿# **Python Taixuanshifa 太玄筮法**
+[![Python](https://img.shields.io/pypi/pyversions/taixuanshifa)](https://pypi.org/project/taixuanshifa/)
+[![PIP](https://img.shields.io/pypi/v/taixuanshifa)](https://pypi.org/project/taixuanshifa/)
+[![Downloads](https://img.shields.io/pypi/dm/taixuanshifa)](https://pypi.org/project/taixuanshifa/)
+[![TG](https://img.shields.io/badge/chat-on%20telegram-blue)](https://t.me/gnatnek)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?logo=paypal&style=flat-square)](https://www.paypal.me/kinyeah)&nbsp;
 
 ## **1. Introduction 導讀**︰
 
