@@ -1,4 +1,5 @@
-﻿﻿# **Python Taixuanshifa 太玄筮法**
+# **Python Taixuanshifa 太玄筮法**
+  
 [![Python](https://img.shields.io/pypi/pyversions/taixuanshifa)](https://pypi.org/project/taixuanshifa/)
 [![PIP](https://img.shields.io/pypi/v/taixuanshifa)](https://pypi.org/project/taixuanshifa/)
 [![Downloads](https://img.shields.io/pypi/dm/taixuanshifa)](https://pypi.org/project/taixuanshifa/)
