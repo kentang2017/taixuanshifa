@@ -55,6 +55,10 @@ def qigua():
     zhan_dict = {1:"初一", 2:"次二", 3:"次三", 4:"次四", 5:"次五", 6:"次六", 7:"次七", 8:"次八", 9:"上九"}
     zhan_number = zhan_dict.get(qigua_number()[1])
     zhan = gua_details.get(zhan_number)
-    return gua_number, gua, gua_details, zhan_number, zhan
+    daynightselect = {"旦":["初一","次五","次七"], "夕":["次三","次四","次八"], "日中":["次二","次六","上九"], "夜中":["次二","次六","上九"]}
+    hours = list(range(24))
+    hour = datetime.now().hour
+    dnn = daynightselect.get( multi_key_dict_get({tuple(hours[6:12]):"旦", tuple(hours[12:18]):"日中", tuple(hours[18:24]):"夕", tuple(hours[0:6]):"夜中"},hour))
+    return gua_number, gua, [{i:gua_details.get(i)} for i in dnn], qigua_number()
 
 
