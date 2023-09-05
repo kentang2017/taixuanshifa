@@ -12,6 +12,8 @@ root = os.path.abspath(os.path.dirname(__file__))
 data = os.path.join(root, 'data')
 taixuandict_path  = os.path.join(root, 'data', 'taixuandict.p')
 taixuandict = pickle.load( open( taixuandict_path, "rb" ))
+chin_list = list('角亢氐房心尾箕斗牛女虛危室壁奎婁胃昴畢觜參井鬼柳星張翼軫')
+yearsu = [item for sublist in [[chin_list[i]]* [12,9,15,5,5,18,11,26,8,12,10,17,16,9,16,12,14,11,16,2,9,33,4,15,7,18,18,17][i] for i in range(0,28)] for item in sublist]
 
 def qigua_number():
     wai_dict = {7:1, 8:2, 9:3}
