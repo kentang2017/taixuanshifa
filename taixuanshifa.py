@@ -15,6 +15,37 @@ taixuandict = pickle.load( open( taixuandict_path, "rb" ))
 chin_list = list('角亢氐房心尾箕斗牛女虛危室壁奎婁胃昴畢觜參井鬼柳星張翼軫')
 yearsu = [item for sublist in [[chin_list[i]]* [12,9,15,5,5,18,11,26,8,12,10,17,16,9,16,12,14,11,16,2,9,33,4,15,7,18,18,17][i] for i in range(0,28)] for item in sublist]
 
+def jiazi():
+    Gan, Zhi = '甲乙丙丁戊己庚辛壬癸', '子丑寅卯辰巳午未申酉戌亥'
+    return list(map(lambda x: "{}{}".format(Gan[x % len(Gan)], Zhi[x % len(Zhi)]), list(range(60))))
+
+
+def jq(year, month, day):
+    dd = fromSolar(year, month, day) 
+    jqmc = ["冬至", "小寒", "大寒", "立春", "雨水", "驚蟄", "春分", "清明", "谷雨", "立夏",
+         "小滿", "芒種", "夏至", "小暑", "大暑", "立秋", "處暑","白露", "秋分", "寒露", "霜降", 
+         "立冬", "小雪", "大雪"]
+    while True:
+        dd = dd.before(1)
+        if dd.hasJieQi():
+            return jqmc[dd.getJieQi()]
+            break
+        
+def getjq(year, month, day):
+    dd = fromSolar(year, month, day) 
+    jqmc = ["冬至", "小寒", "大寒", "立春", "雨水", "驚蟄", "春分", "清明", "谷雨", "立夏",
+         "小滿", "芒種", "夏至", "小暑", "大暑", "立秋", "處暑","白露", "秋分", "寒露", "霜降", 
+         "立冬", "小雪", "大雪"]
+    return  dd.getJieQi()
+    
+
+def multi_key_dict_get(d, k):
+    for keys, v in d.items():
+        if k in keys:
+            return v
+    return None
+
+
 def qigua_number():
     wai_dict = {7:1, 8:2, 9:3}
     shifa_results = []
