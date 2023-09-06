@@ -46,5 +46,6 @@ with links:
 with pan:
     st.header('堅太玄')
     qtext = taixuanshifa.Taixuan(y,m,d,h).pan()
-    expander = st.expander("原始碼")
-    expander.write(str(qtext))
+    output = st.empty()
+    with st_capture(output.code):
+        print(pan)
