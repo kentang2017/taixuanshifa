@@ -162,9 +162,9 @@ class Taixuan:
         pan8 = "起筮休咎︰{}，{}\n".format(gb[1], gb[2])
         pan9 = "星　　宿︰{}度\n".format(su)
         yao_d = [{i:gua_details.get(i)} for i in dnn]
-        pan10 = "\n"+str(yao_d[0]).replace("'","")[1:][:-2]
-        pan11 = "\n"+str(yao_d[1]).replace("'","")[1:][:-2]
-        pan12 = "\n"+str(yao_d[2]).replace("'","")[1:][:-2]
+        pan10 = "\n"+str(yao_d[0]).replace("'","")[1:][:-1]
+        pan11 = "\n"+str(yao_d[1]).replace("'","")[1:][:-1]
+        pan12 = "\n"+str(yao_d[2]).replace("'","")[1:][:-1]
         return pan1+pan2+pan3+pan7+pan3_1+pan4+pan5+pan6+pan8+pan9+pan10+pan11+pan12
 
 if __name__ == '__main__':
