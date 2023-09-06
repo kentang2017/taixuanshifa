@@ -7,7 +7,6 @@ Updated on Tue Sep 5 23:46 2023
 """
 
 import random, pickle, os, datetime, itertools
-from sxtwl import fromSolar, fromLunar
 import cnlunar
 from cn2an import an2cn
 
