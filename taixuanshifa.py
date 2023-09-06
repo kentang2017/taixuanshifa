@@ -154,18 +154,19 @@ class Taixuan:
         pan2 = "農　　曆︰%s年%s%s日\n" % (a.lunarYearCn,  a.lunarMonthCn[:-1], a.lunarDayCn)
         pan3 = "干　　支︰%s年 %s月 %s日 %s時\n" % (a.year8Char, a.month8Char, a.day8Char, a.twohour8Char)
         pan7 = "起筮時段︰{}\n".format(currenttime)
-        pan3_1 = "贊　　　︰"+ str(list(gua.keys()))[2:][:-2]+"\n"
+        pan3_1 = "首　　　︰"+ str(list(gua.keys()))[2:][:-2]+"\n"
         pan4 = "方州部家︰"+head+"\n\n"
         yaolist = {"1":"▅▅▅▅▅▅▅▅▅▅\n", "2":"▅▅▅▅  ▅▅▅▅\n", "3":"▅▅  ▅▅  ▅▅\n"}
         pan5 = "".join([yaolist.get(i) for i in str(gua_number)])
         pan6 = "\n玄　　首︰{}，{}\n".format(str(xuan_head), head_yy)
         pan8 = "起筮休咎︰{}，{}\n".format(gb[1], gb[2])
         pan9 = "星　　宿︰{}度\n".format(su)
+        pan9_1 = "\n首辭︰{}\n".format(list(gua.values())[0])
         yao_d = [{i:gua_details.get(i)} for i in dnn]
-        pan10 = "\n"+str(yao_d[0]).replace("'","")[1:][:-1]
+        pan10 = "\n表︰\n"+str(yao_d[0]).replace("'","")[1:][:-1]
         pan11 = "\n"+str(yao_d[1]).replace("'","")[1:][:-1]
         pan12 = "\n"+str(yao_d[2]).replace("'","")[1:][:-1]
-        return pan1+pan2+pan3+pan7+pan3_1+pan4+pan5+pan6+pan8+pan9+pan10+pan11+pan12
+        return pan1+pan2+pan3+pan7+pan3_1+pan4+pan5+pan6+pan8+pan9+pan9_1+pan10+pan11+pan12
 
 if __name__ == '__main__':
     print(Taixuan(2023,9,6,15).pan())
