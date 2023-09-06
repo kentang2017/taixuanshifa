@@ -134,7 +134,6 @@ class Taixuan:
         "夜中陽":["夜中陽首","一違二違三從","始中咎終休"],
         "夕陽":["夕筮陽首","一從二違三違","始休中終咎"],
         "旦陰":["旦筮陰首","一違二違三違","大咎"]}
-        
         hours = list(range(24))
         currenttime = multi_key_dict_get({tuple(hours[6:12]):"旦", tuple(hours[12:18]):"日中", tuple(hours[18:24]):"夕", tuple(hours[0:6]):"夜中"},self.hour)
         dnn = daynightselect.get(currenttime)
@@ -150,23 +149,25 @@ class Taixuan:
         biao = (xuan_head-1) * 3  
         xuan_zan = zhan // 2 
         su = dict(zip(list(range(365)),yearsu)).get(xuan_zan)
-        return {
-            "日期":"{}年{}月{}日{}時".format(self.year, self.month, self.day, self.hour),
-            "方州部家":head,
-            "爻排列":gua_number,
-            "太玄卦": gua,
-            "玄首":xuan_head,
-            "玄首陰陽":head_yy,
-            "起筮時段": currenttime,
-            "起筮時段休咎":gb,
-            "玄贊":zhan,
-            "表贊":biao,
-            "星宿": su+"度",
-            "爻辭":[{i:gua_details.get(i)} for i in dnn],
-            }
-
+        pan1 = "起卦時間︰{}年{}月{}日{}時\n".format(self.year, self.month, self.day, self.hour)
+        a = cnlunar.Lunar(datetime.datetime(self.year, self.month, self.day, self.hour, 0))
+        pan2 = "農　　曆︰%s年%s%s日\n" % (a.lunarYearCn,  a.lunarMonthCn[:-1], a.lunarDayCn)
+        pan3 = "干　　支︰%s年 %s月 %s日 %s時\n" % (a.year8Char, a.month8Char, a.day8Char, a.twohour8Char)
+        pan7 = "起筮時段︰{}\n".format(currenttime)
+        pan3_1 = "贊　　　︰"+ str(list(gua.keys()))[2:][:-2]+"\n"
+        pan4 = "方州部家︰"+head+"\n\n"
+        yaolist = {"1":"▅▅▅▅▅▅▅▅▅▅\n", "2":"▅▅▅▅  ▅▅▅▅\n", "3":"▅▅  ▅▅  ▅▅\n"}
+        pan5 = "".join([yaolist.get(i) for i in str(gua_number)])
+        pan6 = "\n玄　　首︰{}，{}\n".format(str(xuan_head), head_yy)
+        pan8 = "起筮休咎︰{}，{}\n".format(gb[1], gb[2])
+        pan9 = "星　　宿︰{}度\n".format(su)
+        yao_d = [{i:gua_details.get(i)} for i in dnn]
+        pan10 = "\n"+str(yao_d[0])[2:][:-2]
+        pan11 = "\n"+str(yao_d[1])[2:][:-2]
+        pan12 = "\n"+str(yao_d[2])[2:][:-2]
+        return pan1+pan2+pan3+pan7+pan3_1+pan4+pan5+pan6+pan8+pan9+pan10+pan11+pan12
 
 if __name__ == '__main__':
-    print(Taixuan(2023,9,6,15).qigua())
+    print(Taixuan(2023,9,6,15).pan())
    
     
