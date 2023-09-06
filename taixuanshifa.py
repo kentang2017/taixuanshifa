@@ -117,7 +117,7 @@ class Taixuan:
         zhou = "".join(str(e) for e in shifa_results[:4])
         return zhou, int(zhan), shifa_results
     
-    def qigua(self):
+    def pan(self):
         results = self.qigua_number()
         gua_number = int(results[0])
         result = results[2]
