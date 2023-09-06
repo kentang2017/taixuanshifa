@@ -45,7 +45,7 @@ with links:
     
 with pan:
     st.header('堅太玄')
-    qtext = taixuanshifa.Taixuan(y,m,d,h).pan()
+    pan = taixuanshifa.Taixuan(y,m,d,h).pan()
     output = st.empty()
     with st_capture(output.code):
         print(pan)
