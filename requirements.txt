@@ -1,5 +1,5 @@
 pendulum==2.1.2
-streamlit==1.13.0
+streamlit==1.30.0
 cnlunar==0.1.1
 cn2an==0.5.22
 
