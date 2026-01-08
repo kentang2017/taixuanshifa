@@ -26,27 +26,53 @@ def get_file_content_as_string1(path):
     response = urllib.request.urlopen(url)
     return response.read().decode("utf-8")
 
-st.set_page_config(layout="wide",page_title="堅太玄 - 太玄筮法排盘")
-pan,guji,links = st.tabs([' 排盤 ', ' 古籍 ',' 連結 ' ])
+st.set_page_config(layout="wide",page_title="堅太玄 - 太玄筮法排盤")
+pan_tab, guji, links = st.tabs([' 排盤 ', ' 古籍 ',' 連結 ' ])
+
+# 使用香港時間
+tz = 'Asia/Hong_Kong'
+
+# 初始化 session state
+if 'current_y' not in st.session_state:
+    now = pdlm.now(tz=tz)
+    st.session_state.current_y = now.year
+    st.session_state.current_m = now.month
+    st.session_state.current_d = now.day
+    st.session_state.current_h = now.hour
+    st.session_state.current_min = now.minute
+
 with st.sidebar:
-    pp_date=st.date_input("日期",pdlm.now(tz='Asia/Shanghai').date())
-    pp_time=st.time_input("時間",pdlm.now(tz='Asia/Shanghai').time())
+    st.header("選擇時間")
+    pp_date = st.date_input("日期", pdlm.now(tz=tz).date())
+    pp_time = st.time_input("時間", pdlm.now(tz=tz).time())
     p = str(pp_date).split("-")
     pp = str(pp_time).split(":")
-    y = int(p[0])
-    m = int(p[1])
-    d = int(p[2])
-    h = int(pp[0])
-    min = int(pp[1])
-   
+    selected_y = int(p[0])
+    selected_m = int(p[1])
+    selected_d = int(p[2])
+    selected_h = int(pp[0])
+    selected_min = int(pp[1])
+    
+    if st.button("應用指定時間並排盤"):
+        st.session_state.current_y = selected_y
+        st.session_state.current_m = selected_m
+        st.session_state.current_d = selected_d
+        st.session_state.current_h = selected_h
+        st.session_state.current_min = selected_min
+
 with links:
     st.header('連結')
-    st.markdown(get_file_content_as_string1("update.md"),  unsafe_allow_html=True)
+    st.markdown(get_file_content_as_string1("update.md"), unsafe_allow_html=True)
     
-with pan:
+with pan_tab:
     st.header('堅太玄')
-    if st.button("排盤"):
-        pan_result = taixuanshifa.Taixuan(y, m, d, h).pan()
-        output = st.empty()
-        with st_capture(output.code):
-            print(pan_result)
+    # 使用當前 session state 的時間排盤
+    pan_result = taixuanshifa.Taixuan(
+        st.session_state.current_y,
+        st.session_state.current_m,
+        st.session_state.current_d,
+        st.session_state.current_h
+    ).pan()
+    output = st.empty()
+    with st_capture(output.code):
+        print(pan_result)
