@@ -33,8 +33,10 @@ pan_tab, guji, links = st.tabs([' 排盤 ', ' 古籍 ',' 連結 ' ])
 tz = 'Asia/Hong_Kong'
 
 # 初始化 session state
-if 'current_y' not in st.session_state:
+if 'selected_date' not in st.session_state:
     now = pdlm.now(tz=tz)
+    st.session_state.selected_date = now.date()
+    st.session_state.selected_time = now.time()
     st.session_state.current_y = now.year
     st.session_state.current_m = now.month
     st.session_state.current_d = now.day
@@ -43,22 +45,17 @@ if 'current_y' not in st.session_state:
 
 with st.sidebar:
     st.header("選擇時間")
-    pp_date = st.date_input("日期", pdlm.now(tz=tz).date())
-    pp_time = st.time_input("時間", pdlm.now(tz=tz).time())
-    p = str(pp_date).split("-")
-    pp = str(pp_time).split(":")
-    selected_y = int(p[0])
-    selected_m = int(p[1])
-    selected_d = int(p[2])
-    selected_h = int(pp[0])
-    selected_min = int(pp[1])
+    pp_date = st.date_input("日期", value=st.session_state.selected_date, key="selected_date")
+    pp_time = st.time_input("時間", value=st.session_state.selected_time, key="selected_time")
     
     if st.button("應用指定時間並排盤"):
-        st.session_state.current_y = selected_y
-        st.session_state.current_m = selected_m
-        st.session_state.current_d = selected_d
-        st.session_state.current_h = selected_h
-        st.session_state.current_min = selected_min
+        p = str(st.session_state.selected_date).split("-")
+        pp = str(st.session_state.selected_time).split(":")
+        st.session_state.current_y = int(p[0])
+        st.session_state.current_m = int(p[1])
+        st.session_state.current_d = int(p[2])
+        st.session_state.current_h = int(pp[0])
+        st.session_state.current_min = int(pp[1])
 
 with links:
     st.header('連結')
