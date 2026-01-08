@@ -45,7 +45,8 @@ with links:
     
 with pan:
     st.header('堅太玄')
-    pan = taixuanshifa.Taixuan(y,m,d,h).pan()
-    output = st.empty()
-    with st_capture(output.code):
-        print(pan)
+    if st.button("排盤"):
+        pan_result = taixuanshifa.Taixuan(y, m, d, h).pan()
+        output = st.empty()
+        with st_capture(output.code):
+            print(pan_result)
