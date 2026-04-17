@@ -18,13 +18,19 @@ def st_capture(output_func):
         
 def get_file_content_as_string(path):
     url = 'https://raw.githubusercontent.com/kentang2017/taixuanshifa/master/' + path
-    response = urllib.request.urlopen(url)
-    return response.read().decode("utf-8")
+    try:
+        response = urllib.request.urlopen(url)
+        return response.read().decode("utf-8")
+    except (urllib.error.HTTPError, urllib.error.URLError):
+        return ""
 
 def get_file_content_as_string1(path):
     url = 'https://raw.githubusercontent.com/kentang2017/kinliuren/master/' + path
-    response = urllib.request.urlopen(url)
-    return response.read().decode("utf-8")
+    try:
+        response = urllib.request.urlopen(url)
+        return response.read().decode("utf-8")
+    except (urllib.error.HTTPError, urllib.error.URLError):
+        return ""
 
 st.set_page_config(layout="wide",page_title="堅太玄 - 太玄筮法排盤")
 pan_tab, guji, links = st.tabs([' 排盤 ', ' 古籍 ',' 連結 ' ])
