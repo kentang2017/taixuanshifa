@@ -1,4 +1,5 @@
 import urllib
+import datetime
 import streamlit as st
 import pendulum as pdlm
 from io import StringIO
@@ -51,7 +52,7 @@ if 'selected_date' not in st.session_state:
 
 with st.sidebar:
     st.header("選擇時間")
-    pp_date = st.date_input("日期", value=st.session_state.selected_date, key="selected_date")
+    pp_date = st.date_input("日期", value=st.session_state.selected_date, min_value=datetime.date(1500, 1, 1), max_value=datetime.date.today(), key="selected_date")
     pp_time = st.time_input("時間", value=st.session_state.selected_time, key="selected_time")
     
     if st.button("應用指定時間並排盤"):
