@@ -149,7 +149,11 @@ class Taixuan:
         zhan = (xuan_head-1) * 9  
         biao = (xuan_head-1) * 3  
         days_since_dz = self.getdz()
-        su = dict(zip(list(range(365)),yearsu)).get(days_since_dz % 365)
+        shichen_index = (self.hour + 1) // 2 % 12  # 0=子,1=丑,...,11=亥
+        # At 午時(index 6) the sun is on the meridian; each 時辰 the meridian
+        # advances ~365/12 ≈ 30.4 Chinese degrees due to Earth's rotation.
+        shichen_offset = round((shichen_index - 6) * 365 / 12)
+        su = dict(zip(list(range(365)),yearsu)).get((days_since_dz + shichen_offset) % 365)
         pan1 = "起卦時間︰{}年{}月{}日{}時\n".format(self.year, self.month, self.day, self.hour)
         a = cnlunar.Lunar(datetime.datetime(self.year, self.month, self.day, self.hour, 0))
         pan2 = "農　　曆︰%s年%s%s日\n" % (a.lunarYearCn,  a.lunarMonthCn[:-1], a.lunarDayCn)
