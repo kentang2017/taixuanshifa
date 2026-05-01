@@ -148,8 +148,8 @@ class Taixuan:
         gb = divine_yy.get( currenttime  + xuan_head_oe)
         zhan = (xuan_head-1) * 9  
         biao = (xuan_head-1) * 3  
-        xuan_zan = zhan // 2 
-        su = dict(zip(list(range(365)),yearsu)).get(xuan_zan)
+        days_since_dz = self.getdz()
+        su = dict(zip(list(range(365)),yearsu)).get(days_since_dz % 365)
         pan1 = "起卦時間︰{}年{}月{}日{}時\n".format(self.year, self.month, self.day, self.hour)
         a = cnlunar.Lunar(datetime.datetime(self.year, self.month, self.day, self.hour, 0))
         pan2 = "農　　曆︰%s年%s%s日\n" % (a.lunarYearCn,  a.lunarMonthCn[:-1], a.lunarDayCn)
